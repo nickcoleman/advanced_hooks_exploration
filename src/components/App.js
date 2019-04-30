@@ -5,15 +5,16 @@ import Context from "../context"
 
 import PublishMessage from "./PublishMessage"
 import MessageBoard from "./MessageBoard"
+import "../pubnub"
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   console.log("state", state)
   return (
-    <Context.Provider value={{state, dispatch}}>
+    <Context.Provider value={{ state, dispatch }}>
       <h2>Reaction</h2>
-      <PublishMessage/>
+      <PublishMessage />
       <MessageBoard messages={state.messages} />
     </Context.Provider>
   )
