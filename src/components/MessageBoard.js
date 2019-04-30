@@ -1,6 +1,11 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useContext } from "react"
+import Context from "../context"
 
-function MessageBoard({ messages }) {
+function MessageBoard() {
+  const {
+    state: { messages },
+  } = useContext(Context)
+
   const renderMessages = () => {
     return messages.map(({ id, text, timestamp }) => {
       return (
