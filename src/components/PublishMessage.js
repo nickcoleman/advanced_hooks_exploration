@@ -3,8 +3,8 @@ import { useAppContext } from "./hooks"
 import { newMessage } from "../state/actions"
 
 function PublishMessage() {
-  // const { dispatch } = useAppContext()
   const {
+    state: { username },
     pubsub: { publish },
   } = useAppContext()
   const [text, setText] = useState("")
@@ -19,7 +19,7 @@ function PublishMessage() {
 
   const publishMesage = () => {
     setText("")
-    publish(newMessage(text))
+    publish(newMessage({ text, username }))
   }
 
   return (

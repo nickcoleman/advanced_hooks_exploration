@@ -6,6 +6,7 @@ import PubSub from "../pubsub"
 
 import PublishMessage from "./PublishMessage"
 import MessageBoard from "./MessageBoard"
+import SetUsername from "./SetUsername"
 
 const pubsub = new PubSub()
 
@@ -24,7 +25,6 @@ function App() {
       message: messageObject => {
         console.log("messageObject", messageObject)
         const { message, channel } = messageObject
-        // console.log("received msg", message, "channel", channel)
         dispatch(message)
       },
     })
@@ -34,6 +34,7 @@ function App() {
   return (
     <Context.Provider value={{ state, dispatch, pubsub }}>
       <h2>Reaction</h2>
+      <SetUsername />
       <PublishMessage />
       <MessageBoard messages={state.messages} />
     </Context.Provider>
