@@ -2,10 +2,11 @@ import React, { Fragment } from "react"
 import { useAppContext } from "./hooks"
 
 import CreateReaction from "./CreateReaction"
+import MessageReactions from "./MessageReactions"
 
 function MessageBoard() {
   const {
-    state: { messages },
+    state: { messages, reactionsMap },
   } = useAppContext()
 
   const renderMessages = () => {
@@ -15,7 +16,8 @@ function MessageBoard() {
           <h4>{new Date(timestamp).toLocaleString()}</h4>
           <div>{text}</div>
           <h4>- {username}</h4>
-          <CreateReaction />
+          <CreateReaction messageId={id} />
+          <MessageReactions messageReactions={reactionsMap[id]} />
           <hr />
         </div>
       )
